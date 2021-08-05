@@ -25,3 +25,13 @@ const Accordion = withStyles({
 ```
 해결
 * guide message대로 root, rounded, expanded, disabled 중 하나를 override해서 사용하려고 하였으나 heading을 사용하지 않고 있어 삭제하였다. 
+
+### validateDOMNesting(...): `<p>` cannot appear as a descendant of `<p>`.
+```
+Warning: validateDOMNesting(...): <p> cannot appear as a descendant of <p>.
+```
+  
+### The prop `xs` of `Grid` must be used on `item`
+```
+index.js:1 Warning: Failed prop type: The prop `xs` of `Grid` must be used on `item`
+```
