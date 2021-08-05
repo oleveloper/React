@@ -35,3 +35,8 @@ Warning: validateDOMNesting(...): <p> cannot appear as a descendant of <p>.
 ```
 index.js:1 Warning: Failed prop type: The prop `xs` of `Grid` must be used on `item`
 ```
+원인
+* Grid의 xs property는 item을 써야하는데, 쓰지 않은 부분이 있었다.
+
+해결
+* item={true}를 xs를 사용하는 모든 Grid에 추가해주었다. 
