@@ -40,3 +40,38 @@ index.js:1 Warning: Failed prop type: The prop `xs` of `Grid` must be used on `i
 
 해결
 * item={true}를 xs를 사용하는 모든 Grid에 추가해주었다. 
+
+
+### Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
+```
+index.js:1 Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
+```
+원인
+* defaultValue 또는 value property를 option tag의 selected 대신에 사용하라는 warning message.
+
+해결
+* 본 에러는 ag-grid 테이블을 사용하면서 pagination 을 구현한 부분에 발생한 warning으로
+  pagination 은 아래와 같이 구현되어 있었다.
+```
+          <select onChange={onPageSizeChanged} id="page-size">
+            <option value="25" selected={pageSize == "25"}>
+              25
+            </option>
+            <option value="100" selected={pageSize == "100"}>
+              100
+            </option>
+            <option value="500" selected={pageSize == "500"}>
+              500
+            </option>
+            <option
+              value={rowNum}
+              selected={
+                pageSize != "25" && pageSize != "100" && pageSize != "500"
+              }
+            >
+              All
+            </option>
+          </select> 
+```
+상기 코드에서 selected property를 삭제하여 메시지 발생하지 않도록 하였으며 잘 동작하는지 테스트까지 완료하였다.
+
