@@ -75,3 +75,28 @@ index.js:1 Warning: Use the `defaultValue` or `value` props on <select> instead 
 ```
 상기 코드에서 selected property를 삭제하여 메시지 발생하지 않도록 하였으며 잘 동작하는지 테스트까지 완료하였다.
 
+### Warning: Failed context type: The context `to` is marked as required in `Link`, but its value is `undefined`.
+```
+Warning: Failed context type: The context `router` is marked as required in `Link`,
+but its value is `undefined`.
+```
+원인
+* to가 Link 컴포넌트에서 필요하나 값이 undefined이기 때문에 발생하는 문제
+```javascript
+<Link 
+className="link" 
+onClick={onClickReset}
+style={resetStyle}/>
+```
+위와 같이 to property가 없어 발생한 문제로 보인다.
+
+해결
+* to 를 집어넣어 해결하였다. 
+```
+<Link 
+className="link" 
+onClick={onClickReset}
+style={resetStyle}
+to={history.location.pathname}/>
+```
+
