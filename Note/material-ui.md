@@ -100,3 +100,16 @@ style={resetStyle}
 to={history.location.pathname}/>
 ```
 
+### `<p>` cannot appear as a descendant of `<p>`.
+```
+<p> cannot appear as a descendant of <p>.
+```
+혹은 div cannot appear as a descendant of p 라는 문구가 출력되기도 한다.
+
+원인
+* 중첩된 element 사이의 문제로 보이며, p 요소는 인라인 요소만 포함 할 수 있는 태그이기 때문에 div가 p 안에 들어가는 것이 문제.
+
+해결
+* 실제로 p 태그 안에 div 태그가 들어가 있는 곳이 있는지 확인했으나 그런 부분은 없었다. 다만 typography를 사용하면서 생긴 문제로 보여 typography 의 property로 component={'span'} 을 주어 해결하였다. 
+
+
